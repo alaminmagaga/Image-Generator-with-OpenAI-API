@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Image</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eee;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .chat {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            background-color: #075E54;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chat-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+        .chat-message {
+            display: flex;
+            margin-bottom: 20px;
+            max-width: 70%;
+        }
+        .chat-message img {
+            max-width: 100%;
+        }
+        .chat-message-content {
+            background-color: #DCF8C6;
+            color: #000;
+            border-radius: 10px;
+            padding: 10px;
+            margin-left: 10px;
+            font-size: 16px;
+            word-wrap: break-word;
+            line-height: 1.5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .chat-message-content::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #DCF8C6;
+            transform: translateY(-50%);
+        }
+        .chat-input {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #F4F4F4;
+            border-top: 1px solid #ccc;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+       
+        .chat-input button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #075E54;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .chat-input button[type="submit"]:hover {
+            background-color: #044C39;
+
+        </style
+    
+</head>
+<body>
+    
+    <div class="chatbot">
+        <br><br>
+        <div class="messages">
+            <div class="message">
+                <p>Hello, how can I help you today?</p>
+            </div>
+        </div>
+        <form method="get" action="{% url 'generate_image' %}">
+            <input type="text" name="text_input" placeholder="generate your image here..." width="20px">
+            <button >Generate</button>
+        </form>
+        {% if image_url %}
+        <div class="messages">
+            <div class="message">
+                <p><img src="{{ image_url }}"></p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="user_input" placeholder="Type your message here...">
+    <button type="submit">Send</button>
+</form>
+{% if user_input %}
+<div class="message">
+    <p class="user-message">{{ user_input }}</p>
+</div>
+<div class="message">
+    <p class="bot-message">{{ bot_response }}</p>
+</div>
+{% endif %}
