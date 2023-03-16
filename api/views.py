@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 
-openai.api_key = 'your openai api key'
+openai.api_key = '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'
 
 import openai
 
